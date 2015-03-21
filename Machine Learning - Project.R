@@ -51,3 +51,13 @@ data_test_clean <- data_test_clean[8:length(data_test_clean)]
 
 # predict the classes of the test set
 predictTest <- predict(model, data_test_clean)
+predictTest
+
+pml_write_files = function(x){
+    n = length(x)
+    for(i in 1:n){
+        filename = paste0("problem_id_",i,".txt")
+        write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
+    }
+}
+pml_write_files(predictTest)
